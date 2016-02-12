@@ -2,6 +2,7 @@
 
 import React from 'react';
 import StockList from '../components/StockList';
+import Weather from '../components/Weather';
 import { connect } from 'react-redux';
 import { getStock } from '../actions/stock';
 
@@ -19,6 +20,7 @@ class Home extends React.Component {
     return (
       <div>
         <p>Home</p>
+        <Weather />
         <StockList stocks={this.props.stocks}/>
       </div>
     )
