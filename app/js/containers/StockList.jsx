@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import StockList from '../components/StockList';
+import Stock from '../components/Stock';
 import { connect } from 'react-redux';
 import { getStock } from '../actions/stock';
 
@@ -11,18 +11,22 @@ function mapStateToProps(state){
   }
 }
 
-class Home extends React.Component {
+class StockList extends React.Component {
   componentDidMount() {
     this.props.dispatch(getStock("APPL"));
   }
   render(){
+    const stocks = this.props.stocks.map(stock => {
+      return (
+        <Stock key={stock.symbol} stock={stock}/>
+      )
+    });
     return (
       <div>
-        <p>Home</p>
-        <StockList stocks={this.props.stocks}/>
+        {stocks}
       </div>
     )
   }
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(StockList);

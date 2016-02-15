@@ -12,9 +12,7 @@ class App extends React.Component {
           <Link className="item" to="/calendar">Calendar</Link>
           <Link className="item" to="/portfolio">Portfolio</Link>
         </div>
-        <div className="ui mian container">
-          {this.props.children}
-        </div>
+        {this.props.children}
       </div>
     )
   }
