@@ -13,7 +13,7 @@ const getInitialState = {
   }
 }
 
-function weather(state = getInitialState, action) {
+export default function weather(state = getInitialState, action) {
   switch(action.type){
     case SET_LOCATION:
       return Object.assign({}, state, {
@@ -27,5 +27,3 @@ function weather(state = getInitialState, action) {
       return state;
   }
 }
-
-export default weather;

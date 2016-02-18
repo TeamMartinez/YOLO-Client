@@ -1,6 +1,6 @@
 import { ADD_STOCK, UPDATE_STOCK } from '../actions/stock';
 
-function stocks(state = [], action) {
+export default function stocks(state = [], action) {
   switch(action.type){
     case ADD_STOCK:
       return [
@@ -11,5 +11,3 @@ function stocks(state = [], action) {
       return state;
   }
 }
-
-export default stocks;
