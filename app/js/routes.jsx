@@ -3,14 +3,17 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import App from './components/App';
-import Home from './components/Home';
-import CalendarPage from './containers/CalendarPage';
-import Portfolio from './components/Portfolio';
+import HomePage from './components/HomePage';
+import CalendarPage from './components/CalendarPage';
+import PortfolioPage from './components/PortfolioPage';
+import Calendar from './components/Calendar';
 
 export default (
   <Route component={App} path='/'>
-    <IndexRoute component={Home}></IndexRoute>
-    <Route component={CalendarPage} path='/calendar'/>
-    <Route component={Portfolio} path='/portfolio'/>
+    <IndexRoute component={HomePage} />
+    <Route component={CalendarPage} path='/calendar'>
+      <IndexRoute component={Calendar} />
+    </Route>
+    <Route component={PortfolioPage} path='/portfolio' />
   </Route>
 )
