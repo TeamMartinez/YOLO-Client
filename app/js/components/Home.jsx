@@ -7,7 +7,7 @@ import WeatherWidget from '../containers/WeatherWidget';
 class Home extends React.Component {
   render(){
     return (
-      <div>
+      <div id="home-content">
         <StockList />
         <WeatherWidget />
       </div>
