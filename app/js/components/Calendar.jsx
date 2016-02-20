@@ -49,7 +49,7 @@ class Calendar extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="calendar">
         <div className="header">
           <i className="caret left icon" onClick={this.previous}></i>
           {this.renderMonthLabel()}

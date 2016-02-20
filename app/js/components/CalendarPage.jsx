@@ -6,7 +6,6 @@ class CalendarPage extends React.Component {
   render(){
     return (
       <div>
-        <p>Calendar</p>
         {this.props.children}
       </div>
     )
