@@ -43,14 +43,14 @@ export function addEvent(event) {
   return dispatch => {
     // Do server comm here
     dispatch(addEventSuccess(event));
-    // dispatch(addEventFailure(event)
+    // dispatch(addEventFailure(err)
   }
 }
 
-export function removeEvent(id) {
+export function removeEvent(index) {
   return dispatch => {
     // Do server comm here
-    dispatch(removeEventSuccess(id));
-    // dispatch(removeEventFailure(id));
+    dispatch(removeEventSuccess(index));
+    // dispatch(removeEventFailure(err));
   }
 }

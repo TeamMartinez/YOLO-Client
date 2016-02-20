@@ -4,7 +4,7 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import App from './components/App';
 import HomePage from './components/HomePage';
-import CalendarPage from './components/CalendarPage';
+import CalendarPage from './containers/CalendarPage';
 import PortfolioPage from './components/PortfolioPage';
 import Calendar from './components/Calendar';
 
