@@ -27,8 +27,8 @@ class Stock extends React.Component {
         <div className="left floated">
           <i className={className}></i>
         </div>
-        <div className="left floated">{this.props.stock.name}</div>
-        <div className="right floated">${this.props.stock.lastPrice}</div>
+        <div className="left floated">{this.props.stock.Name}</div>
+        <div className="right floated">${this.props.stock.LastTradePriceOnly}</div>
       </div>
     )
   }
@@ -36,7 +36,7 @@ class Stock extends React.Component {
   renderCollapse() {
     return this.state.open ? 
       <div className="content">
-        ${this.props.stock.change}
+        {this.props.stock.PercentChange}
       </div> :
         null;
   }
