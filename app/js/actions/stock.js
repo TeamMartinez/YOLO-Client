@@ -1,6 +1,4 @@
 export const ADD_STOCK = 'ADD_STOCK';
-export const UPDATE_STOCK = 'UPDATE_STOCK';
-export const GET_STOCK = 'GET_STOCK';
 
 function _error(response) { console.log(response) }
 
@@ -29,13 +27,6 @@ function fetchStock(ticker, callback, failback) {
 export function addStock(stock) {
   return {
     type: ADD_STOCK,
-    stock
-  }
-}
-
-export function updateStock(stock) {
-  return {
-    type: UPDATE_STOCK,
     stock
   }
 }

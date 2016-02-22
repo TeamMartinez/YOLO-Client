@@ -1,4 +1,4 @@
-import { ADD_STOCK, UPDATE_STOCK } from '../actions/stock';
+import { ADD_STOCK } from '../actions/stock';
 
 export default function stocks(state = {}, action) {
   switch(action.type){

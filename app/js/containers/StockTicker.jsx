@@ -11,22 +11,12 @@ function mapStateToProps(state) {
   }
 }
 
-class StockTicker extends React.Component {
-  constructor() {
-    super();
+const INITIAL_DATA = ['AAPL', 'MSFT', 'TSLA', 'CMRX'];
 
-    this.state = {
-      tickers : [
-        'AAPL',
-        'MSFT',
-        'TSLA',
-        'CMRX'
-      ]
-    };
-  }
+class StockTicker extends React.Component {
 
   componentWillMount () {
-    this.props.dispatch(getStocks(this.state.tickers));
+    this.props.dispatch(getStocks(INITIAL_DATA));
   }
 
   render() {
