@@ -1,7 +1,6 @@
 import { ADD_STOCK, UPDATE_STOCK } from '../actions/stock';
 
-function stocks(state = {}, action) {
-  console.log(action);
+export default function stocks(state = {}, action) {
   switch(action.type){
     case ADD_STOCK:
       var update = {};
@@ -11,5 +10,3 @@ function stocks(state = {}, action) {
       return state;
   }
 }
-
-export default stocks;

@@ -24,4 +24,5 @@ This is the client for the YOLO App.
 ## Notes
 - superagent is an awesome request framework for ajax
 - fetch might be a good idea for consuming our backend api
+- Make your life easier download react and redux chrome exstensions
 
