@@ -13,7 +13,7 @@ class Week extends React.Component {
   checkDayForEvent(day) {
     var date = day.format("MMDDYYYY");
     if(this.props.events.length){
-      var events = this.props.events.reduce((el) => {
+      var events = this.props.events.filter((el) => {
         return el.date === date;
       });
       return events.length;
@@ -25,7 +25,7 @@ class Week extends React.Component {
     var number = this.checkDayForEvent(day);
     if(number) {
       return (
-        <div className="ui label">
+        <div className="ui label right">
           <i className="certificate icon"></i>{number}
         </div>
       )
