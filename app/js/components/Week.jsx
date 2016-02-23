@@ -11,7 +11,7 @@ class Week extends React.Component {
     this.todaysEvents = this.todaysEvents.bind(this);
   }
   checkDayForEvent(day) {
-    var date = day.format("DDMMYYYY");
+    var date = day.format("MMDDYYYY");
     if(this.props.events.length){
       var events = this.props.events.reduce((el) => {
         return el.date === date;
@@ -46,11 +46,11 @@ class Week extends React.Component {
         isToday: date.isSame(new Date(), "day"),
         date: date
       }
-      let DDMMYYYY = date.format('DDMMYYYY');
+      let MMDDYYYY = date.format('MMDDYYYY');
       days.push(
         <span 
           key={day.date.toString()}
-          onClick={() => window.location.href = '/#/calendar/' + DDMMYYYY}
+          onClick={() => window.location.href = '/#/calendar/' + MMDDYYYY}
           className={"day" + (day.isToday ? " today" : "") + (day.isCurrentMonth ? "" : " different-month") + (day.date.isSame(this.props.selected) ? " selected" : "")}
         >{day.number}{this.todaysEvents(date)}</span>
       );
