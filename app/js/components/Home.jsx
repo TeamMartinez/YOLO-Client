@@ -8,7 +8,7 @@ import StockTicker from '../containers/StockTicker';
 class Home extends React.Component {
   render(){
     return (
-      <div id="home-content">
+      <div>
         <WeatherWidget />
         <StockTicker />
         <StockList />
