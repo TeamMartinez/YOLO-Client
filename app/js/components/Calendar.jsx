@@ -37,7 +37,7 @@ class Calendar extends React.Component {
         monthIndex = date.month(),
         count = 0;
     while(!done) {
-      weeks.push(<Week key={date.toString()} date={date.clone()} month={this.state.month}/>)
+      weeks.push(<Week key={date.toString()} date={date.clone()} month={this.state.month} events={this.props.events}/>)
       date.add(1, "w");
       done = count++ > 2 && monthIndex !== date.month();
       monthIndex = date.month();
