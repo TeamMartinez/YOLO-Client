@@ -3,7 +3,6 @@
 import React from 'react';
 import moment from 'moment';
 import AddModal from './AddModal';
-import { addEvent } from '../actions/calendar';
 import { compareEvent } from '../util/sort';
 
 class Day extends React.Component {
@@ -41,6 +40,7 @@ class Day extends React.Component {
               <p>@{event.location}</p>
               <p>From: {start.format('h:mm a')}</p>
               <p>To: {end.format('h:mm a')}</p>
+              <div onClick={() => this.props.removeEvent(event)} className="ui red button">Remove Event</div>
             </div>
           )
         });

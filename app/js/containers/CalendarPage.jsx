@@ -22,7 +22,9 @@ class CalendarPage extends React.Component {
     this.props.dispatch(addEvent(event));
   }
 
-  removeEvent(index) {
+  removeEvent(event) {
+    const index = this.props.events.indexOf(event);
+    console.log(index);
     this.props.dispatch(removeEvent(index));
   }
 
