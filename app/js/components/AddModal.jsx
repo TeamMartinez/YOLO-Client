@@ -13,12 +13,12 @@ class AddModal extends React.Component {
   onSubmit() {
     const event = {
       name: this.refs.name.value,
-      details: this.refs.details.value,
-      date: this.refs.date.value,
-      time: this.refs.time.value
+      location: this.refs.location.value,
+      start_time: this.refs.start_time.value,
+      end_time: this.refs.end_time.value
     }
     this.props.onSubmit(event);
-    this.props.toggle();
+    window.location.href = "/#/calendar/";
   }
 
   render() {
@@ -36,16 +36,16 @@ class AddModal extends React.Component {
                 <input ref="name" id="name" name="name" type="text" />
               </div>
               <div className="field">
-                <label htmlFor="details">Details</label>
-                <input ref="details" id="details" name="details" type="text" />
+                <label htmlFor="location">Location</label>
+                <input ref="location" id="location" name="location" type="text" />
               </div>
               <div className="field">
-                <label htmlFor="date">Date</label>
-                <input ref="date" id="date" name="date" type="text" />
+                <label htmlFor="start_time">Start Time</label>
+                <input ref="start_time" id="start_time" name="start_time" type="datetime-local" />
               </div>
               <div className="field">
-                <label htmlFor="time">Time</label>
-                <input ref="time" id="time" name="time" type="text" />
+                <label htmlFor="end_time">End Time</label>
+                <input ref="end_time" id="end_time" name="end_time" type="datetime-local" />
               </div>
             </div>
           </div>

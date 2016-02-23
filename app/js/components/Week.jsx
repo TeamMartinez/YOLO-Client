@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router';
+import moment from 'moment';
 
 class Week extends React.Component {
   constructor() {
@@ -10,11 +11,14 @@ class Week extends React.Component {
     this.checkDayForEvent = this.checkDayForEvent.bind(this);
     this.todaysEvents = this.todaysEvents.bind(this);
   }
+
   checkDayForEvent(day) {
-    var date = day.format("MMDDYYYY");
+    const format_day = day.format("MMDDYYYY");
     if(this.props.events.length){
-      var events = this.props.events.filter((el) => {
-        return el.date === date;
+      var events = this.props.events.filter((event) => {
+        let event_date = moment(event.start_time, moment.ISO_8601);
+        let format_event = event_date.format("MMDDYYYY");
+        return format_day === format_event;
       });
       return events.length;
     }

@@ -4,6 +4,7 @@ import React from 'react';
 import moment from 'moment';
 import AddModal from './AddModal';
 import { addEvent } from '../actions/calendar';
+import { compareEvent } from '../util/sort';
 
 class Day extends React.Component {
   constructor() {
@@ -24,16 +25,22 @@ class Day extends React.Component {
 
   renderEvents() {
     if(this.props.events.length){
-      var events = this.props.events.filter((el) => {
-        return el.date === this.props.params.day;
+      var events = this.props.events.filter((event) => {
+        let date = moment(event.start_time, moment.ISO_8601);
+        return date.format("MMDDYYYY") === this.props.params.day;
       });
       if(events.length){
-        return events.map((el) => {
+        events = events.sort(compareEvent);
+        return events.map((event) => {
+          let start = moment(event.start_time, moment.ISO_8601);
+          let end = moment(event.end_time, moment.ISO_8601);
           return (
-            <div key={el.anme+el.details}>
-              <h3>{el.name}</h3>
+            <div key={event.name+event.location}>
+              <h3>{event.name}</h3>
               <hr/>
-              <p>{el.details}</p>
+              <p>@{event.location}</p>
+              <p>From: {start.format('h:mm a')}</p>
+              <p>To: {end.format('h:mm a')}</p>
             </div>
           )
         });
@@ -43,7 +50,7 @@ class Day extends React.Component {
   }
 
   render() {
-    var date = moment(this.props.params.day, 'DDMMYYYY');
+    var date = moment(this.props.params.day, 'MMDDYYYY');
     return (
       <div>
         <div className="ui card">
