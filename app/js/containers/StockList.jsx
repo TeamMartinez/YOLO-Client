@@ -13,14 +13,14 @@ function mapStateToProps(state){
 
 class StockList extends React.Component {
   componentDidMount() {
-    this.props.dispatch(getStock("APPL"));
+    this.props.dispatch(getStock("AAPL"));
   }
   render(){
-    const stocks = this.props.stocks.map(stock => {
-      return (
-        <Stock key={stock.symbol} stock={stock}/>
-      )
-    });
+    const stocks = Object.keys(this.props.stocks).map(t => {
+      let s = this.props.stocks[t];
+      return <Stock key={s.symbol} stock={s}/>
+    })
+
     return (
       <div>
         {stocks}
