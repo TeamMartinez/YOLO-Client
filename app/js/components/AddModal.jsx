@@ -11,13 +11,12 @@ class AddModal extends React.Component {
   }
 
   onSubmit() {
-    const event = {
+    this.props.onSubmit({
       name: this.refs.name.value,
       location: this.refs.location.value,
       start_time: this.refs.start_time.value,
       end_time: this.refs.end_time.value
-    }
-    this.props.onSubmit(event);
+    });
     window.location.href = "/#/calendar/";
   }
 
