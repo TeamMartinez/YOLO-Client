@@ -2,16 +2,23 @@ import { ADD_EVENTS, ADD_EVENT_SUCCESS, ADD_EVENT_FAILURE, REMOVE_EVENT_SUCCESS,
 
 //make an error state handler
 
-export default function events(state = {}, action) {
+export default function events(state = [], action) {
   switch(action.type) {
     case ADD_EVENTS:
-      return Object.assign({}, state, actions.events);
+      return [
+        ...state,
+        action.events
+      ]
     case ADD_EVENT_SUCCESS :
-      return Object.assign({}, state, action.event);
+      return [
+        ...state,
+        action.event
+      ]
     case REMOVE_EVENT_SUCCESS :
-      let newState = Object.assign({}, state);
-      delete newState[actions.id];
-      return newState;
+      return [
+        ...state.slice(0, action.index),
+        ...state.slice(action.index+1)
+      ]
     default:
       return state;
   }

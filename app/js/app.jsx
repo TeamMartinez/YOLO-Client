@@ -14,7 +14,7 @@ window.onload = () => {
         {routes}
       </Router>
     </Provider>,
-    document.getElementById('app')
+    document.querySelector('body')
   );
 };
 

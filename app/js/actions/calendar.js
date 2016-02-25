@@ -1,6 +1,8 @@
 export const ADD_EVENTS = 'ADD_EVENTS';
 export const ADD_EVENT_SUCCESS = 'ADD_EVENT_SUCCESS';
 export const ADD_EVENT_FAILURE = 'ADD_EVENT_FAILURE';
+export const UPDATE_EVENT_SUCCESS = 'UPDATE_EVENT_SUCCESS';
+export const UPDATE_EVENT_FAILURE = 'UPDATE_EVENT_FAILURE';
 export const REMOVE_EVENT_SUCCESS = 'REMOVE_EVENT_SUCCESS';
 export const REMOVE_EVENT_FAILURE = 'REMOVE_EVENT_FAILURE';
 
@@ -25,17 +27,32 @@ export function addEventFailure(err) {
   }
 }
 
-export function removeEventSuccess(id) {
+export function updateEventSuccess(index, event) {
+  return {
+    type: UPDATE_EVENT_SUCCESS,
+    index,
+    event
+  }
+}
+
+export function updateEventFailure(err) {
+  return {
+    type: UPDATE_EVENT_FAILURE,
+    err
+  }
+}
+
+export function removeEventSuccess(index) {
   return {
     type: REMOVE_EVENT_SUCCESS,
-    id
+    index
   }
 }
 
 export function removeEventFailure(err) {
   return {
     type: REMOVE_EVENT_FAILURE,
-    id
+    err
   }
 }
 
@@ -43,14 +60,14 @@ export function addEvent(event) {
   return dispatch => {
     // Do server comm here
     dispatch(addEventSuccess(event));
-    // dispatch(addEventFailure(event)
+    // dispatch(addEventFailure(err)
   }
 }
 
-export function removeEvent(id) {
+export function removeEvent(index) {
   return dispatch => {
     // Do server comm here
-    dispatch(removeEventSuccess(id));
-    // dispatch(removeEventFailure(id));
+    dispatch(removeEventSuccess(index));
+    // dispatch(removeEventFailure(err));
   }
 }
