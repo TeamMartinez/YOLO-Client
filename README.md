@@ -5,7 +5,7 @@ This is the client for the YOLO App.
 1. Download Node (v 5+). This should come with `npm`.
 1. Run `sudo npm install -g gulp`
 1. On the directory, run `npm install`
-1. Serve with `gulp`. Default port is `3000`.
+1. Serve with `gulp`. Default port is `8080`.
 
 ## Dev
 - `NODE_ENV='production' gulp build` To build min file
