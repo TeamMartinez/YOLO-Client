@@ -22,7 +22,7 @@ This is the client for the YOLO App.
 -   gulp (task-runner)
 
 ## Notes
-- superagent is an awesome request framework for ajax
 - fetch might be a good idea for consuming our backend api
 - Make your life easier download react and redux chrome exstensions
+- For login page protection use `this.props.loggedIn ? this.props.children : <LoginForm />;` in `components/app.jsx`
 
