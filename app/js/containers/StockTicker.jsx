@@ -7,7 +7,7 @@ import { getStocks } from '../actions/stock';
 
 function mapStateToProps(state) {
   return {
-    stocks: state.stocks
+    stocks: state.stock
   }
 }
 
