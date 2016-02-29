@@ -21,11 +21,8 @@ class AddModal extends React.Component {
   }
 
   render() {
-    const divStyle = {
-      top: '20%'
-    }
     return (
-        <div className="ui modal transition visible active" style={divStyle}>
+        <div className="ui modal transition visible active">
           <i onClick={this.props.toggle} className="close icon"></i>
           <div className="header">Add Event</div>
           <div className="content">

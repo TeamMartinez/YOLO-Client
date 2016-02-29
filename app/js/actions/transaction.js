@@ -1,3 +1,5 @@
+import request from 'superagent';
+
 export const HIDE_TRANSACTION_MODAL = 'HIDE_TRANSACTION_MODAL';
 export const SHOW_TRANSACTION_MODAL = 'SHOW_TRANSACTION_MODAL';
 export const UPLOAD_STOCK_SUCCESS = 'UPLOAD_STOCK_SUCCESS';
@@ -29,7 +31,20 @@ export function hideModal() {
   }
 }
 
-export function uploadStocks(file) {
+export function uploadStocks(files) {
   return dispatch => {
+    /*
+    req = request.post();
+    files.forEach((file) => {
+      req.attach(file.name, file);
+    });
+    req.end((err, resp) => {
+      if(err) {
+        dispatch(uploadStockFailure(err))
+      } else {
+        dispatch(uploadStockSuccess(resp.json()));
+      }
+    });
+    */
   }
 }

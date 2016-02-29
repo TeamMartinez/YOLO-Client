@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { uploadStocks, hideModal, showModal } from '../actions/stock';
+import { uploadStocks, hideModal } from '../actions/stock';
 import DropZone from 'react-dropzone';
 
 function mapStateToProps(state) {
@@ -20,22 +20,24 @@ class StockUploadModal extends React.Component {
   }
 
   hideModal() {
-    console.log("hide modal");
+    this.props.dispatch(hideModal());
   }
 
   onDrop(files) {
-    console.log(files);
+    this.props.dispatch(uploadStocks(files));
   }
 
   render() {
     return (
-        <div className="ui modal transition visible active" style={divStyle}>
+        <div className="ui modal transition visible active">
           <i onClick={this.hideModal} className="close icon"></i>
           <div className="header">Upload Stock History</div>
           <div className="content">
             <div className="ui form">
               <div className="field">
-                <DropZone onDrop={this.onDrop} />
+                <DropZone onDrop={this.onDrop}>
+                  <div style={{textAlign: "center"}}>Drop Files Here</div>
+                </DropZone>
               </div>
             </div>
           </div>

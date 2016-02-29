@@ -15,7 +15,7 @@ function stocks(state = {}, action) {
 }
 
 function modal(state = {}, action) {
-  switch(actions.type) {
+  switch(action.type) {
     case SHOW_TRANSACTION_MODAL:
       return true;
     case HIDE_TRANSACTION_MODAL:
