@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { uploadStocks, hideModal } from '../actions/stock';
+import { uploadStocks, hideModal } from '../actions/transaction';
 import DropZone from 'react-dropzone';
 
 function mapStateToProps(state) {
