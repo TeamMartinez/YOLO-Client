@@ -7,7 +7,7 @@ import DropZone from 'react-dropzone';
 
 function mapStateToProps(state) {
   return {
-    modal: state.transition.modal
+    modal: state.transaction.modal
   }
 }
 
@@ -46,4 +46,4 @@ class StockUploadModal extends React.Component {
   }
 }
 
-export default StockUploadModal;
+export default connect(mapStateToProps)(StockUploadModal);
