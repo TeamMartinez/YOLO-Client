@@ -10,7 +10,7 @@ class LogInForm extends React.Component {
           <img src="http://www.molecularecologist.com/wp-content/uploads/2013/11/github-logo.jpg" />
         </div>
         <div style={{textAlign: "center"}}>
-          <a className="massive ui primary button" href="/api/auth/github">Login</a>
+          <a className="massive ui primary button" href="/auth/github">Login</a>
         </div>
       </div>
     )

@@ -1,3 +1,4 @@
 export default {
-    OWM_API_KEY : ''
+    OWM_API_KEY : '',
+    API_ROOT: 'http://vm344a.se.rit.edu/'
 };
