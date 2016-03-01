@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router';
+import LogInForm from '../components/LogInForm';
 
 class App extends React.Component {
   render(){
@@ -12,7 +13,7 @@ class App extends React.Component {
           <Link className="item" to="/calendar">Calendar</Link>
           <Link className="item" to="/portfolio">Portfolio</Link>
         </div>
-        {this.props.children}
+        {false ? this.props.children : <LogInForm />}
       </div>
     )
   }
