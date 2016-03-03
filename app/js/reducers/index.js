@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
-import stocks from './stock';
+import stock from './stock';
 import weather from './weather';
 import calendar from './calendar';
+import transaction from './transaction';
 
 const app = combineReducers({
-  stocks,
+  stock,
   weather,
-  calendar
+  calendar,
+  transaction
 });
 
 export default app;
