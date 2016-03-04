@@ -19,10 +19,8 @@ This is the client for the YOLO App.
 - React Router
 - Redux
 - npm (package manager)
--   gulp (task-runner)
+- gulp (task-runner)
 
 ## Notes
-- fetch might be a good idea for consuming our backend api
 - Make your life easier download react and redux chrome exstensions
-- For login page protection use `this.props.loggedIn ? this.props.children : <LoginForm />;` in `components/app.jsx`
 
