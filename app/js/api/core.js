@@ -43,6 +43,7 @@ class Core {
   request(resource, method, body) {
     return fetch(url.resolve(this.apiRoot, resource), {
       method: method,
+      credentials: 'same-origin',
       headers: {
         Accept: 'appliction/json',
         'Content-Type': 'appliction/json'

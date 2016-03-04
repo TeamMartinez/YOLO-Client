@@ -1,3 +1,5 @@
+import { checkLogin } from './auth';
+
 export const HIDE_TRANSACTION_MODAL = 'HIDE_TRANSACTION_MODAL';
 export const SHOW_TRANSACTION_MODAL = 'SHOW_TRANSACTION_MODAL';
 export const UPLOAD_STOCK_SUCCESS = 'UPLOAD_STOCK_SUCCESS';
@@ -44,5 +46,6 @@ export function uploadStocks(files) {
       }
     });
     */
+   dispatch(checkLogin());
   }
 }
