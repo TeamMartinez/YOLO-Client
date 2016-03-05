@@ -6,7 +6,7 @@ import classnames from 'classnames';
 class StockTickerItem extends React.Component {
   render() {
     return (
-      <div className="ui small statistic">
+      <div className="ui tiny inverted statistic">
         <div className="green value">
           ${this.props.stock.LastTradePriceOnly}  
         </div>
