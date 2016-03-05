@@ -22,7 +22,7 @@ class StockList extends React.Component {
     })
 
     return (
-      <div>
+      <div className="ui three stackable cards">
         {stocks}
       </div>
     )

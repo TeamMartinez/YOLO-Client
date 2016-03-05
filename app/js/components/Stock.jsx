@@ -46,6 +46,12 @@ class Stock extends React.Component {
       <div className="ui card">
         {this.renderHeader()}
         {this.renderCollapse()}
+        <div className="extra content">
+          <div className="ui two small buttons">
+            <div className="ui basic red button">Sell</div>
+            <div className="ui basic green button">Buy</div>
+          </div>
+        </div>
       </div>
     )
   }
