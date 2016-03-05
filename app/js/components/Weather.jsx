@@ -21,16 +21,18 @@ class Weather extends React.Component {
         const temp = this._kelvinToFahrenheit(this.props.temp);
 
         return(
-          <div className="ui card" style={{maxHeight:'65px'}}>
-            <div className="content">
-              <div className="right floated meta">
-                <img className="left floated" src={iconUrl} />
-              </div>
-              <span className="header">{cityName}</span>
-              <div className="meta">
-                <span className="date">
-                  {temp}℉{conditions}
-                </span>
+          <div className="ui left internal attached rail">
+            <div className="ui card" style={{maxHeight:'65px'}}>
+              <div className="content">
+                <div className="right floated meta">
+                  <img className="left floated" src={iconUrl} />
+                </div>
+                <span className="header">{cityName}</span>
+                <div className="meta">
+                  <span className="date">
+                    {temp}℉{conditions}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
