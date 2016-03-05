@@ -14,5 +14,3 @@ describe('auth', () => {
     expect(auth(true, action)).toBe(false);
   });
 });
-
-
