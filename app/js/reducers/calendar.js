@@ -7,7 +7,7 @@ export default function events(state = [], action) {
     case ADD_EVENTS:
       return [
         ...state,
-        action.events
+        ...action.events
       ]
     case ADD_EVENT_SUCCESS :
       return [
