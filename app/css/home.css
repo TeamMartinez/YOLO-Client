@@ -1,3 +1,7 @@
 #home-content {
   margin: 10px;
 }
+
+body {
+    background: url(../img/food.png) repeat;
+}
