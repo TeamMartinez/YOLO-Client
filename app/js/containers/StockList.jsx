@@ -12,13 +12,27 @@ function mapStateToProps(state){
 }
 
 class StockList extends React.Component {
-  componentDidMount() {
-    this.props.dispatch(getStock("AAPL"));
+  constructor() {
+    super();
+
+    this.filterStocks = this.filterStocks.bind(this);
   }
+
+  // will return the filtered list of stocks to display on the main page
+  filterStocks() {
+    return Object.keys(this.props.stocks).map((symbol) => {
+      // this.props.stocks_to_display.indexOf(symbol) != -1
+      if(true) { 
+        return symbol;
+      }
+    });
+  }
+
   render(){
-    const stocks = Object.keys(this.props.stocks).map(t => {
-      let s = this.props.stocks[t];
-      return <Stock key={s.symbol} stock={s}/>
+    // Should only show the stocks that the user has added to there home page
+    const stocks = this.filterStocks().map(symbol => {
+      let stock = this.props.stocks[symbol];
+      return <Stock key={stock.symbol} stock={stock}/>
     })
 
     return (

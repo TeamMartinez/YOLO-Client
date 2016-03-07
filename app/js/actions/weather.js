@@ -1,3 +1,5 @@
+'use strict';
+
 import Config from '../config';
 
 export const SET_LOCATION = 'SET_LOCATION';

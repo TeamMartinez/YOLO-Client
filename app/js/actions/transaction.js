@@ -1,3 +1,5 @@
+'use strict';
+
 import { checkLogin } from './auth';
 
 export const HIDE_TRANSACTION_MODAL = 'HIDE_TRANSACTION_MODAL';

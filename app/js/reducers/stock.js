@@ -1,3 +1,5 @@
+'use strict';
+
 import { ADD_STOCK_SUCCESS } from '../actions/stock';
 
 export default function stock(state = {}, action) {

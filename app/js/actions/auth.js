@@ -1,3 +1,5 @@
+'use strict';
+
 import Api from '../api_wrapper';
 
 export const LOGIN = 'LOGIN';

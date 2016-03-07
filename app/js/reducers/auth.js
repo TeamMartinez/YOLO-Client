@@ -1,3 +1,5 @@
+'use strict';
+
 import { LOGIN, LOGOUT } from '../actions/auth';
 
 export default function auth(state = false, action) {
