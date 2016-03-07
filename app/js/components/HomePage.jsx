@@ -11,7 +11,7 @@ class Home extends React.Component {
     return (
       <div>
         <StockTicker />
-        <div className="ui raised green segment center aligned">
+        <div className="main-content ui raised green segment center aligned">
           <h1 className="ui icon header">
             <i className="circular blue gift icon"></i>
             <div className="content">

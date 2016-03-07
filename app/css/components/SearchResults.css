@@ -1,0 +1,25 @@
+.search-results {
+  margin-top: 1em;
+}
+
+.sr-info-field {
+  margin-top: 1em;
+  font-size: 1.2em;
+}
+
+.sr-stock-info > div {
+  margin-left: 1em;
+}
+
+.sr-current-price > span {
+  font-size: 1.5em;
+  margin-right: 5px;
+}
+
+.sr-change-positive {
+  color: #00FF00;
+}
+
+.sr-change-negative {
+  color: #FF0000;
+}

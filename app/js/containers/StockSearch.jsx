@@ -2,8 +2,9 @@
 
 import React from 'react';
 import SearchResults from '../components/SearchResults';
+import classNames from 'classnames';
 import { connect } from 'react-redux';
-import { getStock } from '../actions/stock';
+import { getStock, getStockHistory } from '../actions/stock';
 
 function mapStateToProps(state) {
   return {
@@ -26,14 +27,15 @@ class StockSearch extends React.Component {
   search() {
     const ticker = this.refs.searchInput.value.toUpperCase();
     this.props.dispatch(getStock(ticker));
+    this.props.dispatch(getStockHistory(ticker));
     this.setState({ticker : ticker});
   }
 
   renderSearch() {
     return (
-      <div>
-        <div className="ui input left floated">
-          <input type="text" placeholder="Search stocks..." ref="searchInput"/>
+      <div className="stock-search">
+        <div className="search-input ui input left floated">
+          <input type="text" placeholder="Search by ticker..." ref="searchInput"/>
         </div>
         <button className="ui button icon" onClick={this.search}>
           <i className="search icon"></i>
@@ -51,7 +53,9 @@ class StockSearch extends React.Component {
     return (
       <div>
         {this.renderSearch()}
-        <SearchResults stock={stock}/>
+        {(this.state.ticker) ?
+          <SearchResults ticker={this.state.ticker} stock={stock}/> :
+          <div></div>}
       </div>
     )
   }
