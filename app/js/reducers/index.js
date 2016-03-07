@@ -1,3 +1,5 @@
+'use strict';
+
 import { combineReducers } from 'redux';
 import auth from './auth';
 import stock from './stock';

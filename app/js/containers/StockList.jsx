@@ -12,9 +12,6 @@ function mapStateToProps(state){
 }
 
 class StockList extends React.Component {
-  componentDidMount() {
-    this.props.dispatch(getStock("AAPL"));
-  }
   render(){
     const stocks = Object.keys(this.props.stocks).map(t => {
       let s = this.props.stocks[t];

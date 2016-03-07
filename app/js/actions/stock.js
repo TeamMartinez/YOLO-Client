@@ -1,3 +1,5 @@
+'use strict';
+
 import { fetchStock, fetchStocks } from '../providers/stock';
 
 export const ADD_STOCK_SUCCESS = 'ADD_STOCK_SUCCESS';

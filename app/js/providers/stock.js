@@ -1,3 +1,5 @@
+'use strict';
+
 export function fetchStocks(tickers, callback, failback) {
   const baseUrl = 'https://query.yahooapis.com/v1/public/yql?q=';
   const formatted = tickers.map(t => { return '"' + t + '"' }).join(',');
