@@ -1,3 +1,5 @@
+'use strict';
+
 import { SET_LOCATION, SET_WEATHER } from '../actions/weather';
 
 const getInitialState = {

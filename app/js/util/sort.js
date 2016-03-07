@@ -1,3 +1,5 @@
+'use strict';
+
 import moment from 'moment';
 
 export function compareEvent(a, b) {

@@ -1,3 +1,5 @@
+'use strict';
+
 import moment from 'moment';
 
 export function fetchStocks(tickers, callback, failback) {

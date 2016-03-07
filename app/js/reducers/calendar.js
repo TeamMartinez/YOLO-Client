@@ -1,3 +1,5 @@
+'use strict';
+
 import { ADD_EVENTS, ADD_EVENT_SUCCESS, ADD_EVENT_FAILURE, REMOVE_EVENT_SUCCESS, REMOVE_EVENT_FAILURE } from '../actions/calendar';
 
 //make an error state handler

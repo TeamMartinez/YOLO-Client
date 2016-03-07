@@ -1,3 +1,5 @@
+'use strict';
+
 import { fetchStock, fetchStocks, fetchStockHistory } from '../providers/stock';
 import moment from 'moment';
 

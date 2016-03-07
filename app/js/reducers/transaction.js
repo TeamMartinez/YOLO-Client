@@ -1,3 +1,5 @@
+'use strict';
+
 import { HIDE_TRANSACTION_MODAL, SHOW_TRANSACTION_MODAL, UPLOAD_STOCK_SUCCESS } from '../actions/transaction';
 
 const initState = {
