@@ -11,6 +11,7 @@ function mapStateToProps(state) {
   }
 }
 
+// This should be pulled from the API
 const INITIAL_DATA = ['AAPL', 'MSFT', 'TSLA', 'CMRX', 'NFLX', 'AMZN', 'GOOG'];
 
 class StockTicker extends React.Component {
