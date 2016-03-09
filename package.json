@@ -6,7 +6,6 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "classnames": "^2.2.3",
     "express": "^4.13.4",
     "history": "^2.0.0",
     "isomorphic-fetch": "^2.2.1",
