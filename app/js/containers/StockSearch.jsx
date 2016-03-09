@@ -2,7 +2,6 @@
 
 import React from 'react';
 import SearchResults from '../components/SearchResults';
-import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { getStock, getStockHistory } from '../actions/stock';
 

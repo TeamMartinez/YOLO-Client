@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import classnames from 'classnames';
 
 class StockTickerItem extends React.Component {
   render() {
@@ -11,9 +10,8 @@ class StockTickerItem extends React.Component {
           ${this.props.stock.LastTradePriceOnly}  
         </div>
         <div className="label">
-          <h2 className={classnames({
-            'ui green sub header' : this.props.stock.Change[0] === '+',
-            'ui red sub header' : this.props.stock.Change[0] === '-' })}>
+          <h2 className={this.props.stock.Change[0] === '+' ?
+              'ui green sub header' : 'ui red sub header'}>
             {this.props.stock.Symbol}
           </h2>
           <span>{this.props.stock.PercentChange}</span>

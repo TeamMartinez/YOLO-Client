@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import classNames from 'classnames';
 import { LineChart } from 'react-d3';
 
 class SearchResults extends React.Component {
@@ -25,10 +24,8 @@ class SearchResults extends React.Component {
 
         <div className="sr-current-price">
           <span>Current price: ${this.props.stock.LastTradePriceOnly}</span>
-          <span className={classNames({
-            'sr-change-positive' : this.props.stock.Change[0] === '+',
-            'sr-change-negative' : this.props.stock.Change[0] === '-'
-          })}>
+          <span className={this.props.stock.Change[0] === '+' ?
+              'sr-change-positive' : 'sr-change-negative'}>
             ({this.props.stock.PercentChange})
           </span>
         </div>

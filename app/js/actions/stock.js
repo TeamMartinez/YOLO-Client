@@ -38,7 +38,7 @@ export function addStockHistoryFailure(err) {
 
 export function getStock(ticker) {
   return dispatch => {
-    fetchStock(ticker, function (r) {
+    fetchStock(ticker, r => {
       r.query.results.quote.Name === null ?
         dispatch(addStockFailure('No stock with ticker "' + ticker + '"')) :
         dispatch(addStockSuccess(r.query.results.quote));
@@ -50,7 +50,7 @@ export function getStock(ticker) {
 
 export function getStocks(tickers) {
   return dispatch => {
-    fetchStocks(tickers, function (r) {
+    fetchStocks(tickers, r => {
       r.query.results.quote.forEach(s => {
         s.Name === null ?
           dispatch(addStockFailure('No stock with ticker "' + ticker + '"')) :
@@ -64,7 +64,7 @@ export function getStocks(tickers) {
 
 export function getStockHistory(ticker) {
   return dispatch => {
-    fetchStockHistory(ticker, function (r) {
+    fetchStockHistory(ticker, r => {
       if (r.query.results === null) {
         dispatch(
           addStockHistoryFailure('No stock with ticker "' + ticker + '"')
