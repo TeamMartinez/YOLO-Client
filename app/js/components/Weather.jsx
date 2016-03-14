@@ -9,7 +9,7 @@ class Weather extends React.Component {
     }
 
     _kelvinToFahrenheit (k) {
-        return Math.round(k * 9 / 5 - 459.67);
+        return Math.round(k * 9 / 5 - 459.67) || '--';
     }
 
     render() {
