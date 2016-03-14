@@ -7,7 +7,7 @@ const initState = {
   modal: false
 }
 
-function stocks(state = {}, action) {
+function stocks(state, action) {
   switch(action.type) {
     case UPLOAD_STOCK_SUCCESS:
       return Object.assign({}, state, update);
@@ -16,7 +16,7 @@ function stocks(state = {}, action) {
   }
 }
 
-function modal(state = {}, action) {
+function modal(state, action) {
   switch(action.type) {
     case SHOW_TRANSACTION_MODAL:
       return true;
