@@ -9,7 +9,7 @@ const CURR_FORMATTERS = {
 
 export function format(price, currency) {
   const unformatted = CURR_FORMATTERS[currency] || '-';
-  return unformatted.replace(/-/, parseFloat(price).toFixed(2));
+  return unformatted.replace(/-/, parseFloat(price || 0).toFixed(2));
 }
 
 export function formatter(currency) {
