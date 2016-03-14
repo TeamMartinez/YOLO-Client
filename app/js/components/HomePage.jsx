@@ -4,12 +4,14 @@ import React from 'react';
 import StockList from '../containers/StockList';
 import WeatherWidget from '../containers/WeatherWidget';
 import StockTicker from '../containers/StockTicker';
+import StockSearch from '../containers/StockSearch';
 
 class Home extends React.Component {
   render(){
     return (
-      <div> 
-        <div className="ui raised green segment center aligned">
+      <div>
+        <StockTicker />
+        <div className="main-content ui raised green segment center aligned">
           <h1 className="ui icon header">
             <i className="circular blue gift icon"></i>
             <div className="content">
@@ -19,9 +21,10 @@ class Home extends React.Component {
           </h1>
 
           <WeatherWidget />
-          <StockList />
+          <StockSearch />
         </div>
-        <StockTicker />
+
+        <StockList />
       </div>
     )
   }
