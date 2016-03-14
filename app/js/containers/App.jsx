@@ -17,7 +17,11 @@ class App extends React.Component {
     super();
 
     this.getLinkClasses = this.getLinkClasses.bind(this);
+    this.renderNav = this.renderNav.bind(this);
+    this.renderFull = this.renderFull.bind(this);
+    this.renderLogin = this.renderLogin.bind(this);
   }
+
   componentDidMount() {
     this.props.dispatch(checkLogin());
   }
@@ -39,27 +43,46 @@ class App extends React.Component {
     return classNames;
   }
 
-  render(){
+  renderNav() {
     const classNames = this.getLinkClasses();
+
     return (
-      <div className="ui container">
-        <div className="ui three item labeled icon menu">
-          <Link className={classNames.home} to="/">
-            <i className="home icon"></i>
-            Home
-          </Link>
-          <Link className={classNames.calendar} to="/calendar">
-            <i className="calendar icon"></i>
-            Calendar
-          </Link>
-          <Link className={classNames.portfolio} to="/portfolio">
-            <i className="line chart icon"></i>
-            Portfolio
-          </Link>
-        </div>
-        {this.props.auth ? this.props.children : <LogInForm />}
+      <div className="ui three item labeled icon menu">
+        <Link className={classNames.home} to="/">
+          <i className="home icon"></i>
+          Home
+        </Link>
+        <Link className={classNames.calendar} to="/calendar">
+          <i className="calendar icon"></i>
+          Calendar
+        </Link>
+        <Link className={classNames.portfolio} to="/portfolio">
+          <i className="line chart icon"></i>
+          Portfolio
+        </Link>
       </div>
     )
+  }
+
+  renderFull() {
+    return (
+      <div className="ui container">
+        {this.renderNav()}
+        {this.props.children}
+      </div>
+    )
+  }
+
+  renderLogin() {
+    return (
+      <div className="ui container">
+        <LogInForm />
+      </div>
+    )
+  }
+
+  render() {
+    return this.props.auth ? this.renderFull() : this.renderLogin()
   }
 }
 
