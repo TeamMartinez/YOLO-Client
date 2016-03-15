@@ -38,4 +38,5 @@ node_modules
 # build
 dist/
 
-config.js
+# OS X files
+.DS_Store
