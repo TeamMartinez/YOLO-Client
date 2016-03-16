@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import { format } from '../util/priceFormatter';
 
 class Stock extends React.Component {
   constructor() {
@@ -22,13 +23,16 @@ class Stock extends React.Component {
 
   renderHeader() {
     const className = this.state.open ? "caret down icon" : "caret right icon";
+    const formattedPrice =
+      format(this.props.stock.LastTradePriceOnly, this.props.stock.Currency);
+
     return (
       <div className="content" onClick={this.toggleCollapse}>
         <div className="left floated">
           <i className={className}></i>
         </div>
         <div className="left floated">{this.props.stock.Name}</div>
-        <div className="right floated">${this.props.stock.LastTradePriceOnly}</div>
+        <div className="right floated">{formattedPrice}</div>
       </div>
     )
   }
