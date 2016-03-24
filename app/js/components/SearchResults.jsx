@@ -3,6 +3,7 @@
 import React from 'react';
 import moment from 'moment';
 import { LineChart } from 'react-d3';
+import { formatter } from '../util/priceFormatter';
 
 class SearchResults extends React.Component {
 
@@ -16,6 +17,8 @@ class SearchResults extends React.Component {
   }
 
   renderStockInfo() {
+    const format = formatter(this.props.stock.Currency);
+
     return (
       <div className="six wide column left aligned sr-stock-info">
 
@@ -24,7 +27,9 @@ class SearchResults extends React.Component {
         </div>
 
         <div className="sr-current-price">
-          <span>Current price: ${this.props.stock.LastTradePriceOnly}</span>
+          <span>
+            Current price: {format(this.props.stock.LastTradePriceOnly)}
+          </span>
           <span className={this.props.stock.Change[0] === '+' ?
               'sr-change-positive' : 'sr-change-negative'}>
             ({this.props.stock.PercentChange})
@@ -32,19 +37,19 @@ class SearchResults extends React.Component {
         </div>
 
         <div className="sr-info-field">
-          Day's high: ${this.props.stock.DaysHigh}
+          Day's high: {format(this.props.stock.DaysHigh)}
         </div>
 
         <div className="sr-info-field">
-          Day's low: ${this.props.stock.DaysLow}
+          Day's low: {format(this.props.stock.DaysLow)}
         </div>
 
         <div className="sr-info-field">
-          Yearly high: ${this.props.stock.YearHigh}
+          Yearly high: {format(this.props.stock.YearHigh)}
         </div>
 
         <div className="sr-info-field">
-          Yearly low: ${this.props.stock.YearLow}
+          Yearly low: {format(this.props.stock.YearLow)}
         </div>
 
         <div className="sr-info-field">
