@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import moment from 'moment';
 import { LineChart } from 'react-d3';
 import { formatter } from '../util/priceFormatter';
 
@@ -81,6 +82,10 @@ class SearchResults extends React.Component {
           }}
           title="One Year"
           yAxisLabel="Closing Price"
+          xAxisFormatter={(t) =>
+            // show year instead of month if month is January
+            moment(t).format(t.getMonth() === 0 ? 'YYYY' : 'MMM')
+          }
           gridHorizontal={true}
         />
       </div>
