@@ -19,7 +19,7 @@ export function logout() {
 
 export function checkLogin() {
   return (dispatch, getState) => {
-    Api.Auth.check().then((loginState) => {
+    Api.Auth.check().then(loginState => {
       if(getState().auth !== loginState) {
         loginState ? dispatch(login()) : dispatch(logout());
       }

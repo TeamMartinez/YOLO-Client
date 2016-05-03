@@ -52,9 +52,7 @@ export function getLocaction() {
         }));
         dispatch(getWeather());
       },
-      () => {
-        dispatch(getWeather());
-      }
+      () => { dispatch(getWeather()) }
     )
   }
 }
