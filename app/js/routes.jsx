@@ -7,7 +7,7 @@ import HomePage from './components/HomePage';
 import CalendarPage from './containers/CalendarPage';
 import PortfolioPage from './components/PortfolioPage';
 import Calendar from './components/Calendar';
-import Day from './components/Day';
+import Day from './containers/Day';
 
 export default (
   <Route component={App} path='/'>

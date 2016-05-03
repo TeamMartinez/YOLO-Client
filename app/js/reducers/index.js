@@ -3,16 +3,20 @@
 import { combineReducers } from 'redux';
 import auth from './auth';
 import stock from './stock';
+import modal from './modal';
+import alerts from './alerts';
 import weather from './weather';
 import calendar from './calendar';
 import transaction from './transaction';
 
 const app = combineReducers({
+  alerts,
   auth,
   calendar,
+  modal,
   stock,
+  transaction,
   weather,
-  transaction
 });
 
 export default app;
