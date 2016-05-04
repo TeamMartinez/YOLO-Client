@@ -2,8 +2,17 @@
 
 import React from 'react';
 import moment from 'moment';
-import AddModal from './AddModal';
+import AddModal from '../components/AddModal';
+import { connect } from 'react-redux';
 import { compareEvent } from '../util/sort';
+import { EVENT_MODAL } from '../consts/modal';
+import { showModal, closeModal } from '../actions/modal';
+
+function mapStateToProps(store) {
+  return {
+    modal: store.modal,
+  };
+}
 
 class Day extends React.Component {
   constructor() {
@@ -11,15 +20,14 @@ class Day extends React.Component {
 
     this.renderEvents = this.renderEvents.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
-    this.state = {
-      modal: false
-    }
   }
 
   toggleModal() {
-    this.setState({
-      modal: !this.state.modal
-    });
+    if (this.props.modal) {
+      this.props.dispatch(closeModal());
+    } else {
+      this.props.dispatch(showModal(EVENT_MODAL));
+    }
   }
 
   renderEvents() {
@@ -64,10 +72,10 @@ class Day extends React.Component {
             <div className="ui green button" onClick={this.toggleModal}>Add Event</div>
           </div>
         </div>
-        {this.state.modal ? <AddModal toggle={this.toggleModal} onSubmit={this.props.addEvent} /> : null}
+        {this.props.modal === EVENT_MODAL ? <AddModal toggle={this.toggleModal} onSubmit={this.props.addEvent} /> : null}
       </div>
     )
   }
 }
 
-export default Day;
+export default connect(mapStateToProps)(Day);

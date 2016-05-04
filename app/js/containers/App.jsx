@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { checkLogin } from '../actions/auth';
 import LogInForm from '../components/LogInForm';
+import Alerts from './Alerts';
 
 function mapStateToProps(state) {
   return {
@@ -17,7 +18,6 @@ class App extends React.Component {
     super();
 
     this.getLinkClasses = this.getLinkClasses.bind(this);
-    this.renderNav = this.renderNav.bind(this);
     this.renderFull = this.renderFull.bind(this);
     this.renderLogin = this.renderLogin.bind(this);
   }
@@ -31,7 +31,7 @@ class App extends React.Component {
     const classNames = {
       home: "green item",
       calendar: "blue item",
-      portfolio: "orange item"
+      portfolio: "orange item",
     }
     if(current_page.indexOf("calendar") !== -1) {
       classNames.calendar = "active blue item";
@@ -43,34 +43,29 @@ class App extends React.Component {
     return classNames;
   }
 
-  renderNav() {
+  renderFull() {
     const classNames = this.getLinkClasses();
 
     return (
-      <div className="ui three item labeled icon menu">
-        <Link className={classNames.home} to="/">
-          <i className="home icon"></i>
-          Home
-        </Link>
-        <Link className={classNames.calendar} to="/calendar">
-          <i className="calendar icon"></i>
-          Calendar
-        </Link>
-        <Link className={classNames.portfolio} to="/portfolio">
-          <i className="line chart icon"></i>
-          Portfolio
-        </Link>
-      </div>
-    )
-  }
-
-  renderFull() {
-    return (
       <div className="ui container">
-        {this.renderNav()}
+        <div className="ui three item labeled icon menu">
+          <Link className={classNames.home} to="/">
+            <i className="home icon"></i>
+            Home
+          </Link>
+          <Link className={classNames.calendar} to="/calendar">
+            <i className="calendar icon"></i>
+            Calendar
+          </Link>
+          <Link className={classNames.portfolio} to="/portfolio">
+            <i className="line chart icon"></i>
+            Portfolio
+          </Link>
+        </div>
+        <Alerts />
         {this.props.children}
       </div>
-    )
+    );
   }
 
   renderLogin() {
@@ -78,11 +73,11 @@ class App extends React.Component {
       <div className="ui container">
         <LogInForm />
       </div>
-    )
+    );
   }
 
   render() {
-    return this.props.auth ? this.renderFull() : this.renderLogin()
+    return this.props.auth ? this.renderFull() : this.renderLogin();
   }
 }
 
