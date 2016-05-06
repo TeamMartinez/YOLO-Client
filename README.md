@@ -23,4 +23,5 @@ This is the client for the YOLO App.
 
 ## Notes
 - Make your life easier download react and redux chrome exstensions
+- Google analytics are kept by @kocsenc 
 
