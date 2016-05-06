@@ -5,6 +5,7 @@ import StockList from '../containers/StockList';
 import WeatherWidget from '../containers/WeatherWidget';
 import StockTicker from '../containers/StockTicker';
 import StockSearch from '../containers/StockSearch';
+import IssuesPage from '../containers/Issues';
 
 class Home extends React.Component {
   render(){
@@ -25,6 +26,7 @@ class Home extends React.Component {
         </div>
 
         <StockList />
+        <IssuesPage />
       </div>
     )
   }

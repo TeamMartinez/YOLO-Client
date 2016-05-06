@@ -6,32 +6,32 @@ import { getEvents } from '../actions/issues';
 
 function mapStateToProps(store) {
   return {
-    events: store.calendar
+    issues: store.issues
   }
 }
 
-class CalendarPage extends React.Component {
+class IssuesPage extends React.Component {
   constructor() {
     super();
   }
 
   componentDidMount() {
-    console.log("swag");
-    this.props.dispatch(getEvents());
+    console.log("issues mounted");
+    //this.props.dispatch(getIssues()); // is totally defined
   }
 
   render(){
     const childrenWithProps = React.Children.map(this.props.children, (child) => {
       return React.cloneElement(child, {
-        events: this.props.events,
+        issues: this.props.issues,
       });
     });
     return (
       <div>
-        {childrenWithProps}
+      
       </div>
     )
   }
 }
 
-export default connect(mapStateToProps)(CalendarPage);
+export default connect(mapStateToProps)(IssuesPage);
