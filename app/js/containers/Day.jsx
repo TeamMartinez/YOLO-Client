@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { compareEvent } from '../util/sort';
 import { EVENT_MODAL } from '../consts/modal';
 import { showModal, closeModal } from '../actions/modal';
+import { addEvent, removeEvent } from '../actions/calendar';
 
 function mapStateToProps(store) {
   return {
@@ -18,8 +19,18 @@ class Day extends React.Component {
   constructor() {
     super();
 
-    this.renderEvents = this.renderEvents.bind(this);
+    this.add = this.add.bind(this);
+    this.remove = this.remove.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
+    this.renderEvents = this.renderEvents.bind(this);
+  }
+
+  add(event) {
+    this.props.dispatch(addEvent(event));
+  }
+
+  remove(id) {
+    this.props.dispatch(removeEvent(id));
   }
 
   toggleModal() {
@@ -42,13 +53,13 @@ class Day extends React.Component {
           let start = moment(event.start_time, moment.ISO_8601);
           let end = moment(event.end_time, moment.ISO_8601);
           return (
-            <div key={event.name+event.location}>
+            <div key={event.id}>
               <h3>{event.name}</h3>
               <hr/>
               <p>@{event.location}</p>
               <p>From: {start.format('h:mm a')}</p>
               <p>To: {end.format('h:mm a')}</p>
-              <div onClick={() => this.props.removeEvent(event)} className="ui red button">Remove Event</div>
+              <div onClick={() => this.remove(event.id)} className="ui red button">Remove Event</div>
             </div>
           )
         });
@@ -72,7 +83,7 @@ class Day extends React.Component {
             <div className="ui green button" onClick={this.toggleModal}>Add Event</div>
           </div>
         </div>
-        {this.props.modal === EVENT_MODAL ? <AddModal toggle={this.toggleModal} onSubmit={this.props.addEvent} /> : null}
+        {this.props.modal === EVENT_MODAL ? <AddModal toggle={this.toggleModal} onSubmit={this.add} /> : null}
       </div>
     )
   }

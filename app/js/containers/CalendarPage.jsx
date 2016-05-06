@@ -2,38 +2,28 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { addEvent, removeEvent } from '../actions/calendar';
+import { getEvents } from '../actions/calendar';
 
-function mapStateToProps(state) {
+function mapStateToProps(store) {
   return {
-    events: state.calendar
+    events: store.calendar
   }
 }
 
 class CalendarPage extends React.Component {
   constructor() {
     super();
-
-    this.addEvent = this.addEvent.bind(this);
-    this.removeEvent = this.removeEvent.bind(this);
   }
 
-  addEvent(event) {
-    this.props.dispatch(addEvent(event));
-  }
-
-  removeEvent(event) {
-    const index = this.props.events.indexOf(event);
-    console.log(index);
-    this.props.dispatch(removeEvent(index));
+  componentDidMount() {
+    console.log("swag");
+    this.props.dispatch(getEvents());
   }
 
   render(){
     const childrenWithProps = React.Children.map(this.props.children, (child) => {
       return React.cloneElement(child, {
         events: this.props.events,
-        addEvent: this.addEvent,
-        removeEvent: this.removeEvent
       });
     });
     return (

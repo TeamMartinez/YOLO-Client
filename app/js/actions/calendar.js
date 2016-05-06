@@ -1,62 +1,76 @@
 'use strict';
 
-import { checkLogin } from './auth';
+import api from '../api_wrapper';
 
-export const ADD_EVENTS = 'ADD_EVENTS';
 export const ADD_EVENT_SUCCESS = 'ADD_EVENT_SUCCESS';
 export const ADD_EVENT_FAILURE = 'ADD_EVENT_FAILURE';
+export const GET_EVENTS_SUCCESS = 'GET_EVENTS_SUCCESS';
+export const GET_EVENTS_FAILURE = 'GET_EVENTS_FAILURE';
 export const REMOVE_EVENT_SUCCESS = 'REMOVE_EVENT_SUCCESS';
 export const REMOVE_EVENT_FAILURE = 'REMOVE_EVENT_FAILURE';
 
-export function addEvents(events) {
-  return {
-    type: ADD_EVENTS,
-    events
-  }
-}
-
-export function addEventSuccess(event) {
+function addEventSuccess(events) {
   return {
     type: ADD_EVENT_SUCCESS,
-    event
+    events,
   }
 }
 
-export function addEventFailure(err) {
+function addEventFailure(err) {
   return {
     type: ADD_EVENT_FAILURE,
-    err
+    err,
   }
 }
 
-export function removeEventSuccess(index) {
+function getEventsSuccess(events) {
+  return {
+    type: GET_EVENTS_SUCCESS,
+    events,
+  };
+}
+
+function getEventsFailure(err) {
+  return {
+    type: GET_EVENTS_FAILURE,
+    err,
+  };
+}
+
+function removeEventSuccess(events) {
   return {
     type: REMOVE_EVENT_SUCCESS,
-    index
+    events,
   }
 }
 
-export function removeEventFailure(err) {
+function removeEventFailure(err) {
   return {
     type: REMOVE_EVENT_FAILURE,
-    err
+    err,
   }
 }
 
 export function addEvent(event) {
   return dispatch => {
-    // Do server comm here
-    dispatch(checkLogin);
-    dispatch(addEventSuccess(event));
-    // dispatch(addEventFailure(err)
+    api.Events.create(event).then(events => {
+      dispatch(addEventSuccess(events));
+    }).catch(err => dispatch(addEventFailure(err)));
   }
 }
 
-export function removeEvent(index) {
+export function getEvents() {
   return dispatch => {
-    // Do server comm here
-    dispatch(checkLogin);
-    dispatch(removeEventSuccess(index));
-    // dispatch(removeEventFailure(err));
+    api.Events.all().then(events => {
+      dispatch(getEventsSuccess(events));
+    }).catch(err => dispatch(getEventsFailure(err)));
+  }
+}
+
+export function removeEvent(id) {
+  return (dispatch, getState) => {
+    api.Events.destory(id).then(events => {
+      dispatch(removeEventSuccess(events));
+    }).catch(err => dispatch(removeEventFailure(err)));
   }
 }
