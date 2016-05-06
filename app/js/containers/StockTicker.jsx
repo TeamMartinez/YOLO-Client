@@ -12,7 +12,7 @@ function mapStateToProps(state) {
 }
 
 // This should be pulled from the API
-const INITIAL_DATA = ['AAPL', 'MSFT', 'TSLA', 'CMRX', 'NFLX', 'AMZN', 'GOOG'];
+const INITIAL_DATA = ['AAPL', 'MSFT', 'TSLA', 'NFLX', 'AMZN', 'GOOG'];
 
 class StockTicker extends React.Component {
 
@@ -27,8 +27,8 @@ class StockTicker extends React.Component {
     })
 
     return (
-      <div className="ui fluid inverted segment stock-ticker">
-        <marquee>{stockTickerItems}</marquee>
+      <div className="ui fluid inverted center aligned segment stock-ticker">
+        <div>{stockTickerItems}</div>
       </div>
     )
   }
