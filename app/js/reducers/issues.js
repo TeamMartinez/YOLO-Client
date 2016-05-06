@@ -1,15 +1,15 @@
 'use strict';
 
-import { ADD_EVENT_SUCCESS, GET_EVENTS_SUCCESS, REMOVE_EVENT_SUCCESS } from '../actions/calendar';
+import { ADD_ISSUE_SUCCESS, GET_ISSUES_SUCCESS, REMOVE_ISSUE_SUCCESS } from '../actions/issues';
 
 //make an error state handler
 
-export default function events(state = [], action) {
+export default function issues(state = [], action) {
   switch(action.type) {
-    case ADD_EVENT_SUCCESS:
-    case GET_EVENTS_SUCCESS:
-    case REMOVE_EVENT_SUCCESS:
-      return action.events;
+    case ADD_ISSUE_SUCCESS:
+    case GET_ISSUES_SUCCESS:
+    case REMOVE_ISSUE_SUCCESS:
+      return action.issues;
     default:
       return state;
   }
