@@ -14,7 +14,7 @@ class APIRoot {
     this.StockNotes = new API("stock_notes");
     this.StockSummaries = new API("stock_sumaries");
     this.Transactions = new API("stock_transactions");
-    this.Issues = new API("issues");
+    this.Issues = new API("github_issues");
   }
 }
 

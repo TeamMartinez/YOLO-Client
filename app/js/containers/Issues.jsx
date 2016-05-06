@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { getEvents } from '../actions/issues';
+import { getIssues } from '../actions/issues';
+import api from '../api_wrapper';
 
 function mapStateToProps(store) {
   return {
@@ -17,7 +18,7 @@ class IssuesPage extends React.Component {
 
   componentDidMount() {
     console.log("issues mounted");
-    //this.props.dispatch(getIssues()); // is totally defined
+    this.props.dispatch(getIssues());
   }
 
   render(){
@@ -28,7 +29,7 @@ class IssuesPage extends React.Component {
     });
     return (
       <div>
-      
+
       </div>
     )
   }
