@@ -4,10 +4,15 @@ import React from 'react';
 import SearchResults from '../components/SearchResults';
 import { connect } from 'react-redux';
 import { getStock, getStockHistory } from '../actions/stock';
+import { buyStock, sellStock } from '../actions/transaction';
+import { showModal, closeModal } from '../actions/modal';
+import { SELL_MODAL, BUY_MODAL } from '../consts/modal';
+import BuySellModal from '../components/BuySellModal';
 
 function mapStateToProps(state) {
   return {
-    stocks: state.stock
+    stocks: state.stock,
+    modal: state.modal,
   }
 }
 
@@ -17,10 +22,40 @@ class StockSearch extends React.Component {
 
     this.renderSearch = this.renderSearch.bind(this);
     this.search = this.search.bind(this);
+    this.toggleSell = this.toggleSell.bind(this);
+    this.toggleBuy = this.toggleBuy.bind(this);
+    this.buy= this.buy.bind(this);
+    this.sell= this.sell.bind(this);
 
     this.state = {
       ticker: null
     }
+  }
+
+  toggleSell() {
+    if (this.props.modal) {
+      this.props.dispatch(closeModal());
+    } else {
+      this.props.dispatch(showModal(SELL_MODAL));
+    }
+  }
+
+  toggleBuy() {
+    if (this.props.modal) {
+      this.props.dispatch(closeModal());
+    } else {
+      this.props.dispatch(showModal(BUY_MODAL));
+    }
+  }
+
+  buy(stock, amount) {
+    this.props.dispatch(buyStock(stock, amount));
+    this.props.dispatch(closeModal());
+  }
+
+  sell(stock, amount) {
+    this.props.dispatch(sellStock(stock, amount));
+    this.props.dispatch(closeModal());
   }
 
   search() {
@@ -52,9 +87,11 @@ class StockSearch extends React.Component {
     return (
       <div>
         {this.renderSearch()}
-        {(this.state.ticker) ?
+        {this.state.ticker ?
           <SearchResults ticker={this.state.ticker} stock={stock}/> :
           <div></div>}
+        {this.props.modal===BUY_MODAL ? <BuySellModal toggle={this.toggleSell} onSubmit={this.buy} type="How many would you like to buy?" /> : null}
+        {this.props.modal===SELL_MODAL ? <BuySellModal toggle={this.toggleBuy} onSubmit={this.sell} type="How many would you like to sell?" /> : null}
       </div>
     )
   }

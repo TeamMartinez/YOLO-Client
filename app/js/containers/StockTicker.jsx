@@ -23,7 +23,12 @@ class StockTicker extends React.Component {
   render() {
     const stockTickerItems = Object.keys(this.props.stocks).map(t => {
       let s = this.props.stocks[t];
-      return <StockTickerItem key={s.symbol} stock={s} />
+      return (
+        <StockTickerItem
+          key={s.symbol}
+          stock={s}
+        />
+      )
     })
 
     return (

@@ -1,6 +1,7 @@
 'use strict';
 
 import { checkLogin } from './auth';
+import api from '../api_wrapper';
 
 // upload stocks then pull all transaction history again
 // just put up a notification that it worked
@@ -13,10 +14,11 @@ export const SELL_STOCK_FAILURE = 'SELL_STOCK_FAILURE';
 export const GET_STOCK_TRANSACTIONS_SUCCESS = 'GET_STOCK_TRANSACTIONS_SUCCESS';
 export const GET_STOCK_TRANSACTIONS_FAILURE = 'GET_STOCK_TRANSACTIONS_FAILURE';
 
-function buyStockSuccess(transaction) {
+function buyStockSuccess(transaction, money) {
   return {
     type: BUY_STOCK_SUCCESS,
     transaction,
+    money,
   };
 }
 
@@ -27,10 +29,11 @@ function buyStockFailure(err) {
   };
 }
 
-function sellStockSuccess(transaction) {
+function sellStockSuccess(transaction, money) {
   return {
     type: SELL_STOCK_SUCCESS,
     transaction,
+    money,
   };
 }
 
@@ -70,14 +73,28 @@ function uploadStockFailure(err) {
 }
 
 export function buyStock(stock, amount) {
-  return (dispatch, getState) => {
-    dispatch(buyStockSuccess());
+  return dispatch => {
+    const trans = {
+      ticker: stock.Symbol,
+      market_value: parseInt(stock.LastTradePriceOnly),
+      amount: parseFloat(amount),
+    }
+    api.Buy.create(trans).then(user => {
+      dispatch(buyStockSuccess(trans, user.money))
+    }).catch(err => dispatch(buyStockFailure(err)));
   }
 }
 
 export function sellStock(stock, amount) {
-  return (dispatch, getState) => {
-    dispatch(buyStockFailure());
+  return dispatch => {
+    const trans = {
+      ticker: stock.Symbol,
+      market_value: parseInt(stock.LastTradePriceOnly),
+      amount: parseFloat(amount),
+    }
+    api.Sell.create(trans).then(user => {
+      dispatch(buyStockSuccess(trans, user.money))
+    }).catch(err => dispatch(buyStockFailure(err)));
   }
 }
 

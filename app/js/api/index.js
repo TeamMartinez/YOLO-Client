@@ -11,9 +11,10 @@ class APIRoot {
 
     this.Auth = new auth(Core);
     this.Events = new API("calendar_events");
-    this.StockNotes = new API("stock_notes");
-    this.StockSummaries = new API("stock_sumaries");
     this.Transactions = new API("stock_transactions");
+    this.Buy = new API("stock_transactions/buy");
+    this.Sell = new API("stock_transactions/sell");
+    this.Stock = new API("stock");
   }
 }
 

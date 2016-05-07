@@ -18,6 +18,7 @@ class StockList extends React.Component {
     this.filterStocks = this.filterStocks.bind(this);
   }
 
+
   // will return the filtered list of stocks to display on the main page
   filterStocks() {
     return Object.keys(this.props.stocks).map((symbol) => {
@@ -32,7 +33,12 @@ class StockList extends React.Component {
     // Should only show the stocks that the user has added to there home page
     const stocks = this.filterStocks().map(symbol => {
       let stock = this.props.stocks[symbol];
-      return <Stock key={stock.symbol} stock={stock}/>
+      return (
+        <Stock
+          key={stock.symbol}
+          stock={stock}
+        />
+      )
     })
 
     return (
