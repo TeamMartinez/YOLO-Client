@@ -32,9 +32,9 @@ class Portfolio extends React.Component {
           <div className="contnt">
             <div className="header">{transaction.ticker}</div>
             <div className="description">
-              <div className="left floated" style={transaction.amount > 0 ? {color: 'green'} : {color: 'red'}}>Sold: {Math.abs(transaction.amount)}</div>
+              <div className="left floated" style={transaction.amount < 0 ? {color: 'green'} : {color: 'red'}}>Amount: {Math.abs(transaction.amount)}</div>
               <div className="right floated">
-                For: <div style={transaction.amount > 0 ? {color: 'green', display: 'inline'} : {color: 'red', display: 'inline'}}>
+                For: <div style={transaction.amount < 0 ? {color: 'green', display: 'inline'} : {color: 'red', display: 'inline'}}>
                   ${Math.abs(transaction.amount *transaction.market_value)}
                 </div>
               </div>

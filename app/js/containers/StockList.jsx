@@ -8,7 +8,7 @@ import { getStocks } from '../actions/user';
 function mapStateToProps(state){
   return {
     stocks: state.stock,
-    user: state.user,
+    user: state.user.stocks,
   }
 }
 

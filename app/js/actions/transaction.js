@@ -2,6 +2,7 @@
 
 import { checkLogin } from './auth';
 import api from '../api_wrapper';
+import { getStocks } from './user';
 
 // upload stocks then pull all transaction history again
 // just put up a notification that it worked
@@ -82,6 +83,7 @@ export function buyStock(stock, amount) {
     api.Buy.create(trans).then(user => {
       dispatch(buyStockSuccess(trans, user.money))
     }).catch(err => dispatch(buyStockFailure(err)));
+    dispatch(getStocks());
   }
 }
 
@@ -95,6 +97,7 @@ export function sellStock(stock, amount) {
     api.Sell.create(trans).then(user => {
       dispatch(buyStockSuccess(trans, user.money))
     }).catch(err => dispatch(buyStockFailure(err)));
+    dispatch(getStocks());
   }
 }
 
