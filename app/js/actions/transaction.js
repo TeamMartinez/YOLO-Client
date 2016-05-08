@@ -100,7 +100,9 @@ export function sellStock(stock, amount) {
 
 export function getStockTransactions() {
   return dispatch => {
-    dispatch(getStockTransactionsSuccess());
+    api.Transactions.all().then(trans => {
+      dispatch(getStockTransactionsSuccess(trans));
+    }).catch(err => dispatch(getStockTransactionsFailure(err)));
   }
 }
 

@@ -6,7 +6,7 @@ import {
   GET_STOCK_TRANSACTIONS_SUCCESS,
 } from '../actions/transaction';
 
-export default function transaction(state = {}, action) {
+export default function transaction(state = [], action) {
   switch(action.type) {
     case BUY_STOCK_SUCCESS:
       return [
