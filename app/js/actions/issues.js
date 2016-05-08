@@ -9,10 +9,10 @@ export const GET_ISSUES_FAILURE = 'GET_ISSUES_FAILURE';
 export const REMOVE_ISSUE_SUCCESS = 'REMOVE_ISSUE_SUCCESS';
 export const REMOVE_ISSUE_FAILURE = 'REMOVE_ISSUE_FAILURE';
 
-function addIssueSuccess(events) {
+function addIssueSuccess(issues) {
   return {
     type: ADD_ISSUE_SUCCESS,
-    events,
+    issues,
   }
 }
 
@@ -23,10 +23,10 @@ function addIssueFailure(err) {
   }
 }
 
-function getIssuesSuccess(events) {
+function getIssuesSuccess(issues) {
   return {
     type: GET_ISSUES_SUCCESS,
-    events,
+    issues,
   };
 }
 
@@ -37,10 +37,10 @@ function getIssuesFailure(err) {
   };
 }
 
-function removeIssueSuccess(events) {
+function removeIssueSuccess(issues) {
   return {
     type: REMOVE_ISSUE_SUCCESS,
-    events,
+    issues,
   }
 }
 
@@ -53,24 +53,24 @@ function removeIssueFailure(err) {
 
 export function addIssue(event) {
   return dispatch => {
-    api.Issues.create(event).then(events => {
-      dispatch(addIssueSuccess(events));
+    api.Issues.create(event).then(issues => {
+      dispatch(addIssueSuccess(issues));
     }).catch(err => dispatch(addIssueFailure(err)));
   }
 }
 
 export function getIssues() {
   return dispatch => {
-    api.Issues.all().then(events => {
-      dispatch(getIssuesSuccess(events));
+    api.Issues.all().then(issues => {
+      dispatch(getIssuesSuccess(issues));
     }).catch(err => dispatch(getIssuesFailure(err)));
   }
 }
 
 export function removeIssue(id) {
   return (dispatch, getState) => {
-    api.Issues.destory(id).then(events => {
-      dispatch(removeIssueSuccess(events));
+    api.Issues.destory(id).then(issues => {
+      dispatch(removeIssueSuccess(issues));
     }).catch(err => dispatch(removeIssueFailure(err)));
   }
 }

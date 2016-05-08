@@ -11,7 +11,7 @@ function mapStateToProps(store) {
   }
 }
 
-class IssuesPage extends React.Component {
+class Issues extends React.Component {
   constructor() {
     super();
   }
@@ -22,17 +22,18 @@ class IssuesPage extends React.Component {
   }
 
   render(){
-    const childrenWithProps = React.Children.map(this.props.children, (child) => {
-      return React.cloneElement(child, {
-        issues: this.props.issues,
-      });
-    });
+    const issues = this.props.issues.map(child => {
+      return (
+      <div className="ui segment">processed from backend</div>
+
+      )
+      })
     return (
       <div>
-
+        {issues}
       </div>
     )
   }
 }
 
-export default connect(mapStateToProps)(IssuesPage);
+export default connect(mapStateToProps)(Issues);
