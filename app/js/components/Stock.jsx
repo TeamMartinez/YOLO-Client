@@ -56,10 +56,16 @@ class Stock extends React.Component {
       format(this.props.stock.LastTradePriceOnly, this.props.stock.Currency);
 
     return (
-      <div className="content" onClick={this.toggleCollapse}>
-        <div className="left floated">{this.props.stock.Name}</div>
-        <div className="left floated" style={{paddingLeft: '3%'}}>{this.props.stock.PercentChange}</div>
-        <div className="right floated">{formattedPrice}</div>
+      <div>
+        <div className="content" onClick={this.toggleCollapse}>
+          <div className="left floated" style={{ paddingLeft: '1%'}}>{this.props.stock.Name}</div>
+          <div className="right floated" style={{ paddingRight: '1%'}}>{formattedPrice}</div>
+        </div>
+        <div style={{clear: 'both', marginTop: '1px', marginBottom: '1px'}}></div>
+        <div className="content">
+          <div className="left floated" style={{ paddingLeft: '1%'}}>Owned: {this.props.amount}</div>
+          <div className="right floated" style={{ paddingRight: '1%'}}>{this.props.stock.PercentChange}</div>
+        </div>
       </div>
     )
   }

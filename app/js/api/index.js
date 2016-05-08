@@ -14,7 +14,7 @@ class APIRoot {
     this.Transactions = new API("stock_transactions");
     this.Buy = new API("stock_transactions/buy");
     this.Sell = new API("stock_transactions/sell");
-    this.Stock = new API("stock");
+    this.Stock = new API("stocks");
   }
 }
 

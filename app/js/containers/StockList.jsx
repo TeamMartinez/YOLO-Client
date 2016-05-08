@@ -3,42 +3,39 @@
 import React from 'react';
 import Stock from '../components/Stock';
 import { connect } from 'react-redux';
-import { getStock } from '../actions/stock';
+import { getStocks } from '../actions/user';
 
 function mapStateToProps(state){
   return {
-    stocks: state.stock
+    stocks: state.stock,
+    user: state.user,
   }
 }
 
 class StockList extends React.Component {
   constructor() {
     super();
-
-    this.filterStocks = this.filterStocks.bind(this);
   }
 
-
-  // will return the filtered list of stocks to display on the main page
-  filterStocks() {
-    return Object.keys(this.props.stocks).map((symbol) => {
-      // this.props.stocks_to_display.indexOf(symbol) != -1
-      if(true) { 
-        return symbol;
-      }
-    });
+  componentWillMount () {
+    this.props.dispatch(getStocks());
   }
 
   render(){
-    // Should only show the stocks that the user has added to there home page
-    const stocks = this.filterStocks().map(symbol => {
-      let stock = this.props.stocks[symbol];
-      return (
-        <Stock
-          key={stock.symbol}
-          stock={stock}
-        />
-      )
+    const stocks = this.props.user.map((owned, index) => {
+      let stock = this.props.stocks[owned.ticker];
+      if (stock) {
+        return (
+          <Stock
+            key={stock.symbol}
+            stock={stock}
+            amount={owned.amount}
+          />
+        )
+      } else {
+        // good code fyi
+        return <div key={"yolocoding" + index}></div>
+      }
     })
 
     return (
