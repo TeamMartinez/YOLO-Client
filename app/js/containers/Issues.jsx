@@ -32,12 +32,12 @@ class Issues extends React.Component {
       )
     })
     return (
-      <div>
-        <h3 className="ui header">
+      <div style={{paddingTop: '1%'}}>
+        <h2 className="ui block header">
           <i className="github icon"></i>
           <div className="content">Your GitHub Issues</div>
-        </h3>
-        <div className="ui stackable cards">
+        </h2>
+        <div className="ui stackable centered cards">
           {allIssues}
         </div>
       </div>
