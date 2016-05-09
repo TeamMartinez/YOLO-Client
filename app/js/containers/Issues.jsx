@@ -23,15 +23,23 @@ class Issues extends React.Component {
   render(){
     const allIssues = this.props.issues.map(issue => {
       return (
-        <div>
-          <div className="ui attached header">{issue.title}</div>
-          <div className="ui attached segment">{issue.user.login}</div>
-      </div>
+        <div key={issue.id} className="ui card">
+          <div className="content">
+            <div className="header">{issue.title}</div>
+            <div className="description">{issue.user.login}</div>
+          </div>
+        </div>
       )
     })
     return (
       <div>
-        {allIssues}
+        <h3 className="ui header">
+          <i className="github icon"></i>
+          <div className="content">Your GitHub Issues</div>
+        </h3>
+        <div className="ui stackable cards">
+          {allIssues}
+        </div>
       </div>
     )
   }
