@@ -9,6 +9,7 @@ import alerts from './alerts';
 import weather from './weather';
 import calendar from './calendar';
 import transaction from './transaction';
+import issues from './issues';
 
 const app = combineReducers({
   alerts,
@@ -19,6 +20,7 @@ const app = combineReducers({
   stock,
   transaction,
   weather,
+  issues,
 });
 
 export default app;
