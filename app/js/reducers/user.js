@@ -2,6 +2,7 @@
 
 import { GET_STOCKS_SUCCESS } from '../actions/user';
 import { BUY_STOCK_SUCCESS, SELL_STOCK_SUCCESS } from '../actions/transaction';
+import { LOGIN } from '../actions/auth';
 
 const initState = {
   amount: 1000,
@@ -12,6 +13,7 @@ function amount(state, action) {
   switch(action.type) {
     case BUY_STOCK_SUCCESS:
     case SELL_STOCK_SUCCESS:
+    case LOGIN:
       return action.money;
     default:
       return state;
