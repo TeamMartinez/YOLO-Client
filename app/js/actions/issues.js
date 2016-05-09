@@ -51,14 +51,6 @@ function removeIssueFailure(err) {
   }
 }
 
-export function addIssue(event) {
-  return dispatch => {
-    api.Issues.create(event).then(issues => {
-      dispatch(addIssueSuccess(issues));
-    }).catch(err => dispatch(addIssueFailure(err)));
-  }
-}
-
 export function getIssues() {
   return dispatch => {
     api.Issues.all().then(issues => {
@@ -67,10 +59,10 @@ export function getIssues() {
   }
 }
 
-export function removeIssue(id) {
-  return (dispatch, getState) => {
-    api.Issues.destory(id).then(issues => {
-      dispatch(removeIssueSuccess(issues));
-    }).catch(err => dispatch(removeIssueFailure(err)));
+export function addIssue(evt) {
+  return dispatch => {
+    api.Issues.create(evt).then(issues => {
+      dispatch(addIssueSuccess(issues));
+    }).catch(err => dispatch(addIssueFailure(err)));
   }
 }

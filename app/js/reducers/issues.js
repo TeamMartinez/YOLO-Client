@@ -8,8 +8,8 @@ export default function issues(state = [], action) {
   switch(action.type) {
     case ADD_ISSUE_SUCCESS:
     case GET_ISSUES_SUCCESS:
+    	return action.issues;
     case REMOVE_ISSUE_SUCCESS:
-      return action.issues;
     default:
       return state;
   }

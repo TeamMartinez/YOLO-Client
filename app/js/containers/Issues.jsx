@@ -17,20 +17,19 @@ class Issues extends React.Component {
   }
 
   componentDidMount() {
-    console.log("issues mounted");
     this.props.dispatch(getIssues());
+    console.log(this.props.dispatch(getIssues()));
   }
 
   render(){
-    const issues = this.props.issues.map(child => {
+    const allIssues = this.props.issues.map(child => {
       return (
-      <div className="ui segment">processed from backend</div>
-
+        <div className="ui segment compact"></div>
       )
-      })
+    })
     return (
       <div>
-        {issues}
+        /{allIssues}/
       </div>
     )
   }
