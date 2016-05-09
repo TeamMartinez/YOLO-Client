@@ -5,7 +5,7 @@ import { Route, IndexRoute } from 'react-router';
 import App from './containers/App';
 import HomePage from './components/HomePage';
 import CalendarPage from './containers/CalendarPage';
-import PortfolioPage from './components/PortfolioPage';
+import PortfolioPage from './containers/PortfolioPage';
 import Calendar from './components/Calendar';
 import Day from './containers/Day';
 
