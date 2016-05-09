@@ -18,18 +18,20 @@ class Issues extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(getIssues());
-    console.log(this.props.dispatch(getIssues()));
   }
 
   render(){
-    const allIssues = this.props.issues.map(child => {
+    const allIssues = this.props.issues.map(issue => {
       return (
-        <div className="ui segment compact"></div>
+        <div>
+          <div className="ui attached header">{issue.title}</div>
+          <div className="ui attached segment">{issue.user.login}</div>
+      </div>
       )
     })
     return (
       <div>
-        /{allIssues}/
+        {allIssues}
       </div>
     )
   }
