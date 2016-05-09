@@ -24,7 +24,7 @@ class Alerts extends React.Component {
   render() {
     return this.props.alert ? 
       <div className="ui negative message">
-        <i className="close icon" onClick={close}></i>
+        <i className="close icon" onClick={this.close}></i>
         <div className="header">{this.props.alert}</div>
       </div> : <span />
   }

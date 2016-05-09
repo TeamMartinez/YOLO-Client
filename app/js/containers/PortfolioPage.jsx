@@ -45,9 +45,19 @@ class Portfolio extends React.Component {
     });
 
     return (
-      <div className="ui relaxed divided list">
-        {transactions}
-        {modal}
+      <div style={{width: '80%'}} className="ui centered card">
+        <div className="content">
+          <div className="header">Transactions history</div>
+          <div className="discription">
+             <strong style={{color: 'green'}}>Bought</strong> VS. <strong style={{color: 'red'}}>Sold</strong>
+          </div>
+        </div>
+        <div className="content">
+          <div className="ui relaxed divided list">
+            {transactions}
+            {modal}
+          </div>
+        </div>
       </div>
     )
   }
