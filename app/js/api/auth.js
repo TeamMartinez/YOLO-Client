@@ -9,7 +9,7 @@ export default class Auth {
 
   check() {
     return this.core.get('/auth/verify').then((json) => {
-      return Promise.resolve(json.authenticated);
+      return Promise.resolve(json);
     });
   }
 }

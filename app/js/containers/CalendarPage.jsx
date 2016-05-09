@@ -16,7 +16,6 @@ class CalendarPage extends React.Component {
   }
 
   componentDidMount() {
-    console.log("swag");
     this.props.dispatch(getEvents());
   }
 

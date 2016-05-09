@@ -33,6 +33,10 @@ class Day extends React.Component {
     this.props.dispatch(removeEvent(id));
   }
 
+  componentWillMount() {
+    this.props.dispatch(closeModal());
+  }
+
   toggleModal() {
     if (this.props.modal) {
       this.props.dispatch(closeModal());
