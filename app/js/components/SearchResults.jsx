@@ -13,8 +13,8 @@ const DURATIONS = {
 
 const historySlicers = {
   YEAR: h => h,
-  MONTH: h => h.slice(h.length - 25),
-  WEEK: h => h.slice(h.length - 7),
+  MONTH: h => h.slice(0, 25),
+  WEEK: h => h.slice(0, 7),
 };
 
 class SearchResults extends React.Component {
@@ -97,11 +97,11 @@ class SearchResults extends React.Component {
       strokeWidth: 1
     }];
 
-    const yearClass = (this.state.DURATION === DURATIONS.YEAR) ?
+    const yearClass = (this.state.duration === DURATIONS.YEAR) ?
       'ui active button' : 'ui button';
-    const monthClass = (this.state.DURATION === DURATIONS.MONTH) ?
+    const monthClass = (this.state.duration === DURATIONS.MONTH) ?
       'ui active button' : 'ui button';
-    const weekClass = (this.state.DURATION === DURATIONS.WEEK) ?
+    const weekClass = (this.state.duration === DURATIONS.WEEK) ?
       'ui active button' : 'ui button';
 
     return (
