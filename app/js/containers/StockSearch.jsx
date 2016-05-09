@@ -58,7 +58,8 @@ class StockSearch extends React.Component {
     this.props.dispatch(closeModal());
   }
 
-  search() {
+  search(e) {
+    e.preventDefault();
     const ticker = this.refs.searchInput.value.toUpperCase();
     this.props.dispatch(getStockInfo(ticker));
     this.props.dispatch(getStockHistory(ticker));
@@ -68,9 +69,9 @@ class StockSearch extends React.Component {
   renderSearch() {
     return (
       <div className="stock-search">
-        <div className="search-input ui input left floated">
+        <form onSubmit={this.search} className="search-input ui input left floated">
           <input type="text" placeholder="Search by ticker..." ref="searchInput"/>
-        </div>
+        </form>
         <button className="ui button icon" onClick={this.search}>
           <i className="search icon"></i>
         </button>
