@@ -45,8 +45,8 @@ class Core {
       method: method,
       credentials: 'same-origin',
       headers: {
-        Accept: 'appliction/json',
-        'Content-Type': 'appliction/json'
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(body)
     })
