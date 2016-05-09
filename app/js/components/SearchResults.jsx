@@ -5,6 +5,18 @@ import moment from 'moment';
 import { LineChart } from 'react-d3';
 import { formatter } from '../util/priceFormatter';
 
+const DURATIONS = {
+  YEAR: 'YEAR',
+  MONTH: 'MONTH',
+  WEEK: 'WEEK',
+};
+
+const historySlicers = {
+  YEAR: h => h,
+  MONTH: h => h.slice(h.length - 25),
+  WEEK: h => h.slice(h.length - 7),
+};
+
 class SearchResults extends React.Component {
 
   constructor() {
@@ -14,6 +26,10 @@ class SearchResults extends React.Component {
     this.renderStockGraph = this.renderStockGraph.bind(this);
     this.renderResults = this.renderResults.bind(this);
     this.renderNoStocksFound = this.renderNoStocksFound.bind(this);
+
+    this.state = {
+      duration: DURATIONS.YEAR,
+    }
   }
 
   renderStockInfo() {
@@ -60,32 +76,55 @@ class SearchResults extends React.Component {
     )
   }
 
+  switchDuration(duration) {
+    this.setState({duration});
+  }
+
+  xAxisFormatter() {
+    if (this.state.duration === DURATIONS.YEAR) {
+      return (t) => moment(t).format(t.getMonth() === 0 ? 'YYYY' : 'MMM');
+    } else if (this.state.duration === DURATIONS.MONTH) {
+      return (t) => moment(t).format(t.getDate() === 1 ? 'MMM' : 'Do');
+    } else {
+      return (t) => moment(t).format('ddd');
+    }
+  }
+
   renderStockGraph() {
     const lineData = [{
       name: 'Closing Price',
-      values: this.props.stock.History,
+      values: historySlicers[this.state.duration](this.props.stock.History),
       strokeWidth: 1
-    }]
+    }];
+
+    const yearClass = (this.state.DURATION === DURATIONS.YEAR) ?
+      'ui active button' : 'ui button';
+    const monthClass = (this.state.DURATION === DURATIONS.MONTH) ?
+      'ui active button' : 'ui button';
+    const weekClass = (this.state.DURATION === DURATIONS.WEEK) ?
+      'ui active button' : 'ui button';
 
     return (
       <div className="ten wide column">
+        <div className="ui buttons">
+          <button onClick={() => this.switchDuration(DURATIONS.YEAR)} className={yearClass}>Year</button>
+          <button onClick={() => this.switchDuration(DURATIONS.MONTH)} className={monthClass}>Month</button>
+          <button onClick={() => this.switchDuration(DURATIONS.WEEK)} className={weekClass}>Week</button>
+        </div>
         <LineChart
           legend={false}
           data={lineData}
           width='95%'
           height={250}
+          hoverAnimation={true}
           viewBoxObject={{
             x: 0,
             y: 0,
             width: 800,
             height: 300
           }}
-          title="One Year"
           yAxisLabel="Closing Price"
-          xAxisFormatter={(t) =>
-            // show year instead of month if month is January
-            moment(t).format(t.getMonth() === 0 ? 'YYYY' : 'MMM')
-          }
+          xAxisFormatter={this.xAxisFormatter()}
           gridHorizontal={true}
         />
       </div>
