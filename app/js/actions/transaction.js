@@ -82,8 +82,8 @@ export function buyStock(stock, amount) {
     }
     api.Buy.create(trans).then(user => {
       dispatch(buyStockSuccess(trans, user.money))
+      dispatch(getStocks());
     }).catch(err => dispatch(buyStockFailure(err)));
-    dispatch(getStocks());
   }
 }
 
@@ -96,8 +96,8 @@ export function sellStock(stock, amount) {
     }
     api.Sell.create(trans).then(user => {
       dispatch(buyStockSuccess(trans, user.money))
+      dispatch(getStocks());
     }).catch(err => dispatch(buyStockFailure(err)));
-    dispatch(getStocks());
   }
 }
 
