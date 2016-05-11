@@ -95,9 +95,9 @@ export function sellStock(stock, amount) {
       amount: parseFloat(amount),
     }
     api.Sell.create(trans).then(user => {
-      dispatch(buyStockSuccess(trans, user.money))
+      dispatch(sellStockSuccess(trans, user.money))
       dispatch(getStocks());
-    }).catch(err => dispatch(buyStockFailure(err)));
+    }).catch(err => dispatch(sellStockFailure(err)));
   }
 }
 
