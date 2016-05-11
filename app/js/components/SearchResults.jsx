@@ -34,6 +34,22 @@ class SearchResults extends React.Component {
 
   renderStockInfo() {
     const format = formatter(this.props.stock.Currency);
+    let change;
+    if (this.props.stock.Change) {
+      if (this.props.stock.Change[0] === '+') {
+        change = (
+          <span className='sr-change-positive'>({this.props.stock.PercentChange})</span>
+        );
+      } else {
+        change = (
+          <span className='sr-change-negative'>({this.props.stock.PercentChange})</span>
+        );
+      }
+    } else {
+      change = (
+        <span className="sr-change-positive">(0%)</span>
+      );
+    }
 
     return (
       <div className="six wide column left aligned sr-stock-info">
@@ -42,16 +58,12 @@ class SearchResults extends React.Component {
           {this.props.stock.Name} ({this.props.stock.Symbol})
         </div>
 
-        <div className="sr-current-price">
+        <span className="sr-current-price">
           <span>
             Current price: {format(this.props.stock.LastTradePriceOnly)}
           </span>
-          <span className={this.props.stock.Change[0] === '+' ?
-              'sr-change-positive' : 'sr-change-negative'}>
-            ({this.props.stock.PercentChange})
-          </span>
-        </div>
-
+        </span>
+        {change}
         <div className="sr-info-field">
           Day's high: {format(this.props.stock.DaysHigh)}
         </div>

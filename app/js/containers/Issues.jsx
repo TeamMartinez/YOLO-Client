@@ -26,7 +26,12 @@ class Issues extends React.Component {
         <div key={issue.id} className="ui card">
           <div className="content">
             <div className="header">{issue.title}</div>
-            <div className="description">{issue.user.login}</div>
+            <div className="description">
+              <a href={issue.html_url} className="ui right labeled icon basic teal button">
+                <i className="github icon"></i>
+                view
+              </a>
+            </div>
           </div>
         </div>
       )
