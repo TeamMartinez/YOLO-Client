@@ -18,8 +18,6 @@ class Stock extends React.Component {
   constructor() {
     super();
 
-    this.buy= this.buy.bind(this);
-    this.sell= this.sell.bind(this);
     this.renderHeader = this.renderHeader.bind(this);
     this.toggleSell = this.toggleSell.bind(this);
     this.toggleBuy = this.toggleBuy.bind(this);
@@ -29,7 +27,7 @@ class Stock extends React.Component {
     if (this.props.modal) {
       this.props.dispatch(closeModal());
     } else {
-      this.props.dispatch(showModal(SELL_MODAL));
+      this.props.dispatch(showModal(SELL_MODAL+this.props.stock.Name));
     }
   }
 
@@ -37,17 +35,18 @@ class Stock extends React.Component {
     if (this.props.modal) {
       this.props.dispatch(closeModal());
     } else {
-      this.props.dispatch(showModal(BUY_MODAL));
+      this.props.dispatch(showModal(BUY_MODAL+this.props.stock.Name));
     }
   }
 
-  buy(amount) {
-    this.props.dispatch(buyStock(this.props.stock, amount));
+  buy(stock, amount) {
+    this.props.dispatch(buyStock(stock, amount));
     this.props.dispatch(closeModal());
   }
 
-  sell(amount) {
-    this.props.dispatch(sellStock(this.props.stock, amount));
+  sell(stock, amount) {
+    console.log(stock);
+    this.props.dispatch(sellStock(stock, amount));
     this.props.dispatch(closeModal());
   }
 
@@ -80,8 +79,8 @@ class Stock extends React.Component {
             <div onClick={this.toggleBuy} className="ui basic green button">Buy</div>
           </div>
         </div>
-        {this.props.modal===BUY_MODAL ? <BuySellModal toggle={this.toggleSell} onSubmit={this.buy} type="How many would you like to buy?" /> : null}
-        {this.props.modal===SELL_MODAL ? <BuySellModal toggle={this.toggleBuy} onSubmit={this.sell} type="How many would you like to sell?" /> : null}
+        {this.props.modal===(BUY_MODAL+this.props.stock.Name) ? <BuySellModal toggle={this.toggleSell} onSubmit={this.buy.bind(this, this.props.stock)} type="How many would you like to buy?" /> : null}
+        {this.props.modal===(SELL_MODAL+this.props.stock.Name) ? <BuySellModal toggle={this.toggleBuy} onSubmit={this.sell.bind(this, this.props.stock)} type="How many would you like to sell?" /> : null}
       </div>
     )
   }
